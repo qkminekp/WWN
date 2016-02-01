@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>What was next?</title>
+    <base href="/wwn/"></base> 
+    
+    <link href="img/favicon.png" rel="shortcut icon">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+
+  </head>
+   <body ng-app="app">
+
+    <div class="container">
+        <div class="col-lg-8">
+          <div ng-controller="main">
+              <br>
+              <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group input-group-lg bord">
+                      <input type="text" class="form-control bord1" placeholder="Whats your name" ng-model="name">
+                      <span class="input-group-btn bord2">
+                        <button class="btn btn-success disable" type="button" ng-click="accepted();"><span class="glyphicon glyphicon-ok"></span></button>
+                      </span>
+
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+              </div><!-- /.row -->   
+              <br>
+              <button class="btn btn-primary btn-lg go disabled" type="button" ng-click="go();">Lets begin !</button> 
+              <button class="btn btn-warning repeat" type="button" ng-click="repeat();">Replay</button> 
+              <br><br>
+              <div id="play_box">
+                <div id="play_button" ng-click="go()"></div>
+              </div>
+          </div>  <!-- ng-controller="main" -->
+
+              <div id="player" class="player"></div>
+
+              <div class="row">     
+                    <div class="col-lg-6 answers">
+                      <br>
+                        <h1>What was next ?</h1>
+                      <br>
+                      <div class="list-group">
+                          <div ng-view></div><br>      
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+
+                        <div id="clock">
+                           <h5>{{clocktime}}s</h5>
+                           <img id="clock_img" src="img/gif.gif" height="100" width="100" alt="">
+                         </div>
+                    </div>
+                    
+              </div><!--  /row -->
+        </div><!-- /col-lg-8 -->
+
+        <div class="col-lg-4">
+          <div class="row">
+            <br><br>
+            <h3 ng-if="points>0" class="text-center">{{name}}, you've <b>{{points}}</b> point<span ng-if="points>1">s</span> <br> Well Done !</h3>
+          </div>
+          
+            <table class="table" ng-if="score==true">
+              <thead>
+                <tr>
+                  <th>Position</th>
+                  <th>Name</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr ng-repeat="player in players | orderBy:'-points'">
+                  <td>{{$index+1}}</td>
+                  <td>{{player.name}}</td>
+                  <td>{{player.points}}</td>
+                </tr>
+                
+              </tbody>
+            </table>
+
+            
+            <button class="btn btn-default" ng-click="score();">FINISH</button>
+            <button class="btn btn-danger" ng-click="remove();">REMOVE STORE</button>
+            <br><br>
+
+
+        </div> <!-- /col-lg-4 -->
+
+    </div> <!-- /container -->
+
+<!--===================================================== JAVASCRIPT =========================================================-->
+
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+
+    <script src="js/Aplication.js"></script>
+    <script src="js/Controllers.js"></script>
+
+    <script src="js/jwplayer.js"></script>
+    <script src="https://content.jwplatform.com/libraries/mCCT9a22.js"></script>
+
+  </body>
+</html>

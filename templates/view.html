@@ -1,0 +1,91 @@
+        	
+
+            <div class="list-group-item anw1"ng-click="check(1);cancel();">{{a}}</div>
+            <div class="list-group-item anw2"ng-click="check(2);cancel();">{{b}}</div>
+            <div class="list-group-item anw3"ng-click="check(3);cancel();">{{c}}</div>
+
+            <br>
+            <a href="{{after}}" class="btn btn-primary" ng-if="next" ng-click="fadeout();">NEXT</a>
+
+
+            <h6 ng-if="time_up">I'm sorry, but time is up!<br><br>
+            <a href="{{after}}" class="btn btn-primary" ng-click="fadeout();">NEXT</a>
+          </h6>
+
+            <h6 ng-if="store">I think you have answered this question <br><br>
+            <a href="{{after}}" class="btn btn-primary" ng-click="fadeout();">NEXT</a>
+        	</h6>
+
+
+
+<!--   var playerInstance = jwplayer("player");
+        playerInstance.setup({ 
+        file: "img/" + $scope.movie + ".mp4",
+        image: "img/image_video.jpg",
+        title: "Try",
+        width:692,
+        height:389
+        });
+
+
+      if(store.get($scope.movie))
+        $scope.store = true;
+      $( ".repeat" ).addClass( "disabled" ); 
+      $rootScope.answered = false;
+      document.getElementById("clock").style.display = "none";
+      $scope.check = function (i) {
+        if( !store.get($scope.movie) ) {
+            var popr = $scope.popr;
+            store.set($scope.movie, 'true');
+            $scope.next = true;
+            if ( i==popr) {
+              $( ".anw"+i ).addClass( "list-group-item-success" );  
+              $rootScope.points = $scope.points + 1;
+              store.set('points' , $rootScope.points);
+            }
+            else {
+              $( ".anw"+i ).addClass( "list-group-item-danger" );
+            }
+            $timeout(function() {       
+                 $( ".anw"+popr ).addClass( "list-group-item-correct" );
+              }, 1000);      
+              jwplayer("player").play(true);
+           }
+       };
+      $scope.cancel = function () {
+        $rootScope.answered = true;
+        $timeout.cancel($rootScope.pause);
+        $timeout.cancel($scope.timer);
+        document.getElementById("clock_img").src = "img/0.png";
+       };
+      $scope.fadeout = function () {
+       $( ".answers" ).fadeOut(1);
+       $( ".go" ).removeClass( "disabled" );
+        document.getElementById("clock").style.display = "none";
+       };
+
+       $rootScope.clock = function () {
+            $rootScope.clocktime = 15; 
+            
+            var tick = function() {
+                if(!$rootScope.answered && !store.get($scope.movie)) {
+
+                    document.getElementById("clock").style.display = "block";
+
+                     $scope.timer = $timeout(function() {
+                            $rootScope.clocktime -= 1;
+                            if ( $rootScope.clocktime <= 3)
+                              $("#clock h5").css("font-weight" , "bold");
+                            if ( !$rootScope.clocktime == 0)
+                              tick(); // reset the timer
+                            else
+                              document.getElementById("clock_img").src = "img/0.png";    
+                    }, 1000);
+                  }
+                  else
+                    document.getElementById("clock_img").src = "img/0.png";
+            }
+            if(!$rootScope.answered)
+              tick();
+       };
+ -->
