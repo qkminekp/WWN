@@ -74,7 +74,7 @@ controllers.controller( 'main' , [ '$scope' , '$timeout' , '$rootScope' , 'store
           store.remove('6oA6XJyw');
 
           $( ".disable" ).removeClass( "disabled" );
-          window.location.href = './z6YwuU6V';    
+          window.location.href = './';    
        };
 
 }]);
